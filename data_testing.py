@@ -2,7 +2,7 @@ import numpy as np
 import pandas as pd
 from matplotlib import pyplot as plt
 import seaborn as sb
-import netCDF4 as nc
+from netCDF4 import Dataset
 
 
 def max_of_years(data: pd.DataFrame, column_name):
@@ -16,6 +16,8 @@ breck_data: pd.DataFrame = pd.read_csv("C:\\Users\\swguo\\VSCode Projects\\Clima
 breck_data.set_index("day", drop=False, inplace=True)
 leadville_data: pd.DataFrame = pd.read_csv("C:\\Users\\swguo\\VSCode Projects\\Climate Research\\Snow Research\\Leadville 2SW Iowa Dataset.txt", comment="#")
 leadville_data.set_index("day", drop=False, inplace=True)
+
+ds = Dataset("C:\\Users\\swguo\\VSCode Projects\\Climate Research\\Snow Research\\RALconus4km_wrf_constants.nc")
 
 # Get breck_data index in years
 breck_data['year'] = breck_data['day'].str.slice(0, 4)
